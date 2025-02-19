@@ -42,7 +42,7 @@ public class CategoriaRepository{
     }
 
     @RequestMapping("/update")
-    public String update(
+    public String update()
         @RequestParam("id") long id,
         Model ui){
         
@@ -54,9 +54,22 @@ public class CategoriaRepository{
             }
             return "redirect:/categoria/list";
         }
-    )
-     
     
+    @RequestMapping(value = "/update", method = ResquestMethod.POST)
+    public Strint updata({
+        @RequestParam("id") long id,
+        @RequestParam("nome") String nome){
+            Optional<Categoria> categoria = new categoriaRepo.findById(id);
+
+            if(categoria.isPresent()){
+                categoria.get().setNome(nome);
+
+                
+            }
+        }
+    }
+     
+
 
 
 }
