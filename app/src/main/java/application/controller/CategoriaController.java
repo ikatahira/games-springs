@@ -43,7 +43,7 @@ public class CategoriaRepository{
 
     @RequestMapping("/update")
     public String update()
-        @RequestParam("id") long id,
+        @RequestParam("id") long id
         Model ui){
         
             Optional<Categoria> categoria = categoriaRepo.findById(id);
