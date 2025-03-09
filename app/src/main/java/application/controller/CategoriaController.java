@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import application.model.Categoria;
 import application.repository.CategoriaRepository;
-
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 @RequestMapping("/categoria")
