@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResquestMethod;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import application.model.Categoria;
-import application.repository.CategoriaRepository
+import application.repository.CategoriaRepository;
 
 
 @Controller
@@ -41,10 +41,8 @@ public class CategoriaRepository{
         return "redirect:/categoria/list";
     }
 
-    @RequestMapping("/update")
-    public String update(
-        @RequestParam("id") long id
-        Model ui){
+    @PostMapping("/update") // Anotação de mapeamento
+    public String updateCategoria(@RequestParam("id") long id, Model model) { 
         
             Optional<Categoria> categoria = categoriaRepo.findById(id);
 
@@ -54,6 +52,7 @@ public class CategoriaRepository{
             }
             return "redirect:/categoria/list";
         }
+    
     
     @RequestMapping(value = "/update", method = ResquestMethod.POST)
     public Strint updata(
@@ -68,8 +67,4 @@ public class CategoriaRepository{
             }
         }
     }
-     
-
-
-
-}
+    
