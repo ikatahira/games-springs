@@ -1,13 +1,11 @@
 package application.controller;
-import application.repository.CategoriaRepository;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResquestMethod;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import application.model.Categoria;
 import application.repository.CategoriaRepository;
@@ -15,7 +13,7 @@ import application.repository.CategoriaRepository;
 
 @Controller
 @RequestMapping("/categoria")
-public class CategoriaRepository{
+public class CategoriaController{
 
     @Autowired
     private CategoriaRepository categoriaRepo;
@@ -32,7 +30,7 @@ public class CategoriaRepository{
         return "categoria/insert";
     }
 
-    @RequestMapping(value= "/insert", method = ResquestMethod.POST)
+    @RequestMapping(value= "/insert", method = RequestMethod.POST)
     public String insert (@RequestParam("nome") String nome){
         Categoria categoria = new Categoria();
         categoria.setNome(nome);
@@ -41,8 +39,9 @@ public class CategoriaRepository{
         return "redirect:/categoria/list";
     }
 
-    @PostMapping("/update") // Anotação de mapeamento
-    public String updateCategoria(@RequestParam("id") long id, Model model) { 
+    @RequestMapping("/update") // Anotação de mapeamento
+    public String update(@RequestParam("id") long id,
+     Model ui) { 
         
             Optional<Categoria> categoria = categoriaRepo.findById(id);
 
@@ -54,17 +53,42 @@ public class CategoriaRepository{
         }
     
     
-    @RequestMapping(value = "/update", method = ResquestMethod.POST)
-    public Strint updata(
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String update(
         @RequestParam("id") long id,
         @RequestParam("nome") String nome){
             Optional<Categoria> categoria = new categoriaRepo.findById(id);
 
             if(categoria.isPresent()){
                 categoria.get().setNome(nome);
+                categoriaRepo.save(categoria.get());
 
                 
             }
+            return "redirect:/categoria/list";
+        }
+
+
+        @RequestMapping("/delete")
+        public String delete(
+            @RequestParam("id") long id,
+            Model ui){
+                Optional<Categoria> categoria = new categoriaRepo.findById(id);
+    
+                if(categoria.isPresent()){
+                 ui.addAttribute("categoria", categoria.get());
+                 return "categoria/delete";
+    
+                    
+                }
+                return "redirect:/categoria/list";
+            }
+            
+
+        @RequestMapping(value = "/delete/", method = RequestMethod.POST)
+        public String delete(@PathVariable("id") long id) {
+            categoriaRepo.deleteById(id);
+            return "redirect:/categoria/list";
         }
     }
     

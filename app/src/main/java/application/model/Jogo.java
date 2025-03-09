@@ -29,7 +29,7 @@ public class Jogo {
     private String titulo;
 
     @ManyToOne
-    @JoinColumn (nome = "id_genero")
+    @JoinColumn (name = "id_genero")
     private Categoria categoria;
 
 
@@ -37,16 +37,11 @@ public class Jogo {
     @JoinTable(
         name ="jogos_possuem_plataformas",
         joinColumns = @JoinColumn (name="id_jogos"),
-        inverserJoinColumns = @JoinColumn(name = "id_plataforma"))
+        inverseJoinColumns = @JoinColumn(name = "id_plataforma"))
     private Set<Plataforma> plataformas = new HashSet<>();
 
 
-public void setCategoria(Categoria categoria) {
-    this.categoria = categoria;
-}
-public Categoria getCategoria() {
-    return categoria;
-}
+
 public void setId(long id) {
     this.id = id;
 }
