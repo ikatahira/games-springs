@@ -1,5 +1,5 @@
 package application.controller;
-
+import application.repository.CategoriaRepository;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +42,7 @@ public class CategoriaRepository{
     }
 
     @RequestMapping("/update")
-    public String update()
+    public String update(
         @RequestParam("id") long id
         Model ui){
         
@@ -56,7 +56,7 @@ public class CategoriaRepository{
         }
     
     @RequestMapping(value = "/update", method = ResquestMethod.POST)
-    public Strint updata({
+    public Strint updata(
         @RequestParam("id") long id,
         @RequestParam("nome") String nome){
             Optional<Categoria> categoria = new categoriaRepo.findById(id);
