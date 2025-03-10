@@ -37,12 +37,13 @@ public class Categoria{
         this.nome = nome;
     }
 
-    public void setJogos(Set<Jogo> jogos) {
-        this.jogos = jogos;
-    }
     public Set<Jogo> getJogos() {
         return jogos;
     }
+    public void setJogos(Set<Jogo> jogos) {
+        this.jogos = jogos;
+    }
+   
     
     
 }
