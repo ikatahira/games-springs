@@ -58,7 +58,7 @@ public class CategoriaController{
     public String update(
         @RequestParam("id") long id,
         @RequestParam("nome") String nome){
-            Optional<Categoria> categoria = new categoriaRepo.findById(id);
+            Optional<Categoria> categoria =  categoriaRepo.findById(id);
 
             if(categoria.isPresent()){
                 categoria.get().setNome(nome);
@@ -74,7 +74,7 @@ public class CategoriaController{
         public String delete(
             @RequestParam("id") long id,
             Model ui){
-                Optional<Categoria> categoria = new categoriaRepo.findById(id);
+                Optional<Categoria> categoria =  categoriaRepo.findById(id);
     
                 if(categoria.isPresent()){
                  ui.addAttribute("categoria", categoria.get());
