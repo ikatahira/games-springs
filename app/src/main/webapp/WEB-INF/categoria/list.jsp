@@ -5,14 +5,13 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Gêneros</title>
+        <title>Categoriais</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     </head>
     <body>
-        <%@include file="../menubar.jsp" %>
         <main class="container"></main>
-            <h1>Gêneros</h1>
-            <a class="btn btn-primary" href="/genero/insert">Novo Gênero</a>
+            <h1>Categorias</h1>
+            <a class="btn btn-primary" href="/categoria/insert">Nova Categoria</a>
             
             <table class="table">
                 
@@ -22,13 +21,13 @@
                         <th>&nbsp;</th>
                     </tr>
                 
-                <c:forEach var="c" items="${categoria}">
+                <c:forEach var="c" items="${categorias}">
                         <tr>
                             <td>${c.id}</td>
                             <td>${c.nome}</td>
                             <td>
-                                <a href="/categoria/update/${g.id}" class="btn btn-info">Editar</a>
-                                <a href="/categoria/delete/${g.id}" class="btn btn-danger">Remover</a>
+                                <a href="/categoria/update/${c.id}" class="btn btn-info">Editar</a>
+                                <a href="/categoria/delete/${c.id}" class="btn btn-danger">Remover</a>
                             </td>
                         </tr>
                     </c:forEach>
