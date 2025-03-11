@@ -5,33 +5,26 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Categorias</title>
+        <title>Nova Categoria</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     </head>
     <body>
        
-        <main class="container">
-            <h1>Categorias</h1>
-            <a href="/categoria/insert" class="btn btn-primary">Nova Categoria </a>
-            <table class="table"></table>
-            <tr>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>&nbsp;</th>
-            </tr>
-            <c:forEach var = "item" items="${categorias}">
-                <tr>
-                    <td>${item.id}</td>
-                    <td>${item.nome}</td>
-                    <td>
-                        <a href="/categoria/update?id=${item.id}" class ="btn btn-warning">Editar</a>
-                        
-                        <a href="/categoria/delete?id=${item.id}" class ="btn btn-danger">Excluir</a>
-                    </td>
-                </tr>
-            </c:forEach>
-        </table>
-    </div>
+        <div class="container">
+            <h1>Nova Categoria</h1>
+            <form action="/categoria/insert" method="post">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" name="nome" class="form-control"/>
+
+
+                </div>
+                <br/>
+
+            <a href="/categoria/list" class="btn btn-primary">Voltar </a>
+            <button type="submit" class="btn btn-sucess">Salvar</button>
+          
+            </form>
 
     
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
