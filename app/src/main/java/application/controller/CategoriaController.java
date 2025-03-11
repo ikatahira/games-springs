@@ -86,7 +86,7 @@ public class CategoriaController{
             }
             
 
-        @RequestMapping(value = "/delete/", method = RequestMethod.POST)
+        @RequestMapping(value = "/delete", method = RequestMethod.POST)
         public String delete(@RequestParam("id") long id) {
             categoriaRepo.deleteById(id);
             return "redirect:/categoria/list";

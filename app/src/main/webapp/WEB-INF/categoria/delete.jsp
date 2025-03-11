@@ -1,21 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Remover Genero</title>
+        <title>Remover Categoria</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     </head>
     <body>
-        <%@include file="../menubar.jsp" %>
         <main class="container">
-            <h1>Remover Genero</h1>
+            <h1>Remover Categoria</h1>
             <hr />
-            <p>Tem certeza que deseja remover o genero <em>"${genero.nome}"</em> ?</p>
-            <form action="/generos/delete" method="post">
-                <input type="hidden" name="id" value="${genero.id}" />
-                <a href="/genero/list" class="btn btn-primary">Voltar</a>
+            <p>Tem certeza que deseja remover a categoria <em>"${categoria.nome}"</em> ?</p>
+            <form action="/categoria/delete" method="post">
+                <input type="hidden" name="id" value="${categoria.id}" />
+                <a href="/categoria/list" class="btn btn-primary">Voltar</a>
                 <input type="submit" value="Remover" class="btn btn-danger" />
             </form>
         </main>
