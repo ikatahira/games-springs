@@ -9,11 +9,11 @@
 </head>
 <body>
     <h1>Deletar Jogo</h1>
-    <p>Tem certeza que deseja deletar o jogo com ID ${param.id}?</p>
+    <p>Tem certeza que deseja deletar o jogo com ID ${jogo.titulo}?</p>
     <form action="/jogo/delete" method="post">
         <input type="hidden" name="id" value="${param.id}">
         <button type="submit">Sim, Deletar</button>
-        <a href="/jogos">Cancelar</a>
+        <a href="/jogos/list">Cancelar</a>
     </form>
 </body>
 </html>

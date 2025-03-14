@@ -11,24 +11,33 @@
 <body>
     <h1>Inserir Jogo</h1>
     <form action="/jogo/insert" method="post">
+        <div class = "form-group"></div>
         <label for="titulo">Título:</label>
-        <input type="text" id="titulo" name="titulo"><br><br>
-        
+        <input type="text" id="titulo" name="titulo" class="form-control"/>
+    </div>
+    <div class="form-group">
+
+           
         <label for="categoria">Categoria:</label>
-        <select id="categoria" name="categoria">
+        <select name="categoria" class="form-select">
             <c:forEach var="categoria" items="${categorias}">
                 <option value="${categoria.id}">${categoria.nome}</option>
             </c:forEach>
-        </select><br><br>
+        </select>
+</div>
 
-        <label for="plataformas">Plataformas:</label><br>
+<div class="form-group">
+
+        <label for="plataforma">Plataformas:</label><br>
         <c:forEach var="plataforma" items="${plataformas}">
+            <div class="custom-control custom-checkbox">
             <input type="checkbox" id="plataforma${plataforma.id}" name="plataformas" value="${plataforma.id}">
             <label for="plataforma${plataforma.id}">${plataforma.nome}</label><br>
+        </div>
         </c:forEach><br>
         
         <button type="submit">Inserir</button>
-        <a href="/jogos">Cancelar</a>
+        <a href="/jogos/list">Cancelar</a>
     </form>
 </body>
 </html>
