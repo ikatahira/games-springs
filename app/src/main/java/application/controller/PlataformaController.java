@@ -1,36 +1,38 @@
 package application.controller;
 
-import application.model.Plataforma;
-import application.repository.PlataformaRepository;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
+import application.model.Plataforma;
+import application.repository.PlataformaRepository;
+
 
 @Controller
-@RequestMapping("/plataformas")
+@RequestMapping("/plataforma")
 public class PlataformaController {
 
     @Autowired
-    private PlataformaRepository plataformaRepository;
+    private PlataformaRepository plataformaRepo;
 
     @GetMapping("/list")
-    public String listPlataformas(Model model) {
-        List<Plataforma> plataformas = plataformaRepository.findAll();
-        model.addAttribute("plataformas", plataformas);
-        return "plataformas/list"; // Nome da view para listar as plataformas
+    public String listPlataformas(Model ui) {
+        ui.addAttribute("plataformas", plataformaRepo.findAll());
+        return "plataforma/list"; // Nome da view para listar as plataformas
     }
 
-    @GetMapping("/add")
-    public String addPlataformaForm(Model model) {
-        model.addAttribute("plataforma", new Plataforma()); // Adiciona um objeto Plataforma vazio para o formulário
-        return "plataformas/add"; // Nome da view para o formulário de adição
+    @GetMapping("/insert")
+    public String addPlataformaForm(Model ui) {
+        return "plataformas/insert"; // Nome da view para o formulário de adição
     }
 
-    @PostMapping("/add")
-    public String addPlataformaSubmit(@ModelAttribute Plataforma plataforma) {
+    @RequestMapping(value = "/insert", method = RequestMethod.POST)
+    public String insert(@RequestParam("nome")String nome) {
         plataformaRepository.save(plataforma);
         return "redirect:/plataformas/list"; // Redireciona para a lista após adicionar
     }
